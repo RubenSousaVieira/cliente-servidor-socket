@@ -1,0 +1,8 @@
+Z:\vsrc\SocketServidor\SocketServidor\obj\Debug\SocketServidor.csproj.AssemblyReference.cache
+Z:\vsrc\SocketServidor\SocketServidor\obj\Debug\SocketServidor.csproj.SuggestedBindingRedirects.cache
+Z:\vsrc\SocketServidor\SocketServidor\obj\Debug\SocketServidor.csproj.CoreCompileInputs.cache
+Z:\vsrc\SocketServidor\SocketServidor\bin\Debug\SocketServidor.exe.config
+Z:\vsrc\SocketServidor\SocketServidor\bin\Debug\SocketServidor.exe
+Z:\vsrc\SocketServidor\SocketServidor\bin\Debug\SocketServidor.pdb
+Z:\vsrc\SocketServidor\SocketServidor\obj\Debug\SocketServidor.exe
+Z:\vsrc\SocketServidor\SocketServidor\obj\Debug\SocketServidor.pdb

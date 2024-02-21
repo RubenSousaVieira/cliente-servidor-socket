@@ -1,0 +1,8 @@
+Z:\vsrc\SocketCliente\SocketCliente\bin\Debug\SocketCliente.exe.config
+Z:\vsrc\SocketCliente\SocketCliente\bin\Debug\SocketCliente.exe
+Z:\vsrc\SocketCliente\SocketCliente\bin\Debug\SocketCliente.pdb
+Z:\vsrc\SocketCliente\SocketCliente\obj\Debug\SocketCliente.csproj.AssemblyReference.cache
+Z:\vsrc\SocketCliente\SocketCliente\obj\Debug\SocketCliente.csproj.SuggestedBindingRedirects.cache
+Z:\vsrc\SocketCliente\SocketCliente\obj\Debug\SocketCliente.csproj.CoreCompileInputs.cache
+Z:\vsrc\SocketCliente\SocketCliente\obj\Debug\SocketCliente.exe
+Z:\vsrc\SocketCliente\SocketCliente\obj\Debug\SocketCliente.pdb
