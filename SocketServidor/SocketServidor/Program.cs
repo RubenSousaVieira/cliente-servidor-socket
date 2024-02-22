@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 namespace SocketServidor
 {
@@ -13,41 +11,36 @@ namespace SocketServidor
     {
         static void Main(string[] args)
         {
-            // vamos obter o host e o ip da máquina
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-
-            // especificamos um ponto de ligacao com ip e porta
             IPEndPoint endPoint = new IPEndPoint(ipAddress, 9000);
-
-            // vamos criar um socket
             Socket servidor = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
                 servidor.Bind(endPoint);
-                servidor.Listen(10); // vai aceitar até 10 ligações simultaneas
+                servidor.Listen(10);
 
-                while(true)
+                while (true)
                 {
-                    // quando recebe uma ligação cria um socket de ligação ao cliente
-                    // para continuar à escuta de novas ligações vamos usar um thread
                     Console.WriteLine("À espera de ligaçôes...");
                     Socket socket = servidor.Accept();
 
-                    Thread t1 = new Thread(new Program().EscutaCliente);
+                    Thread t1 = new Thread(EscutaCliente);
                     t1.Start(socket);
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            } finally
+            }
+            finally
             {
                 servidor.Close();
             }
         }
 
-        void EscutaCliente(object socket)
+        static void EscutaCliente(object socket)
         {
             Socket s = (Socket)socket;
             while (true)
@@ -55,6 +48,28 @@ namespace SocketServidor
                 byte[] bytes = new byte[1024];
                 int bytesLenght = s.Receive(bytes);
                 Console.WriteLine("Mensagem: " + Encoding.UTF8.GetString(bytes, 0, bytesLenght));
+
+                string dataHoraAtual = DateTime.Now.ToString();
+                byte[] dataHoraBytes = Encoding.UTF8.GetBytes(dataHoraAtual);
+                s.Send(dataHoraBytes);
+
+                string ipEndereco = ((IPEndPoint)s.LocalEndPoint).Address.ToString();
+                byte[] ipBytes = Encoding.UTF8.GetBytes(ipEndereco);
+                s.Send(ipBytes);
+
+                NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+                string macEndereco = string.Empty;
+                foreach (NetworkInterface adapter in nics)
+                {
+                    if (!adapter.GetPhysicalAddress().ToString().Equals(""))
+                    {
+                        macEndereco = adapter.GetPhysicalAddress().ToString();
+                        break;
+                    }
+                }
+
+                byte[] macBytes = Encoding.UTF8.GetBytes(macEndereco);
+                s.Send(macBytes);
             }
         }
     }

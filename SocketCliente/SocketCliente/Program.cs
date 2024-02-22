@@ -25,10 +25,10 @@ namespace SocketCliente
                 cliente.Connect(endPoint);
 
                 // Imprimir a data e hora atual
-                Console.WriteLine("Data e Hora Atual: " + DateTime.Now);
+                //Console.WriteLine("Data e Hora Atual: " + DateTime.Now);
 
                 // Imprimir o endereço IP do cliente
-                Console.WriteLine("Endereço IP do Cliente: " + ipAddress.ToString());
+                //Console.WriteLine("Endereço IP do Cliente: " + ipAddress.ToString());
 
                 // Obter e imprimir o endereço MAC do cliente
                 NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -41,7 +41,7 @@ namespace SocketCliente
                         break;
                     }
                 }
-                Console.WriteLine("Endereço MAC do Cliente: " + macAddress);
+                //Console.WriteLine("Endereço MAC do Cliente: " + macAddress); 
 
                 while (true)
                 {
